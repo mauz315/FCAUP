@@ -16,7 +16,7 @@ df.set_index("Date", inplace=True)
 
 fig1 = plt.figure(figsize=(8, 6))
 ax1 = fig1.add_subplot(111)
-ax1.plot(df)
+
 
 fmt = '${x:,.1f}'  # formato se borra
 tick = mtick.StrMethodFormatter(fmt)
@@ -31,8 +31,14 @@ ax1.xaxis.set_major_formatter(monthyearFmt)
 ax1.spines['top'].set_visible(False)
 ax1.spines['right'].set_visible(False)
 
-fig1.savefig('graph2_end.png')
-fig1.show()
+line = ax1.plot(df.iloc[0, :])[0]
+
+def animate(i):
+    line.set_data(df.iloc[i, :])
 
 
+ani = animation.FuncAnimation(fig1, animate, interval=100, frames=20)
 
+# ani = animation.FuncAnimation(fig1, animate, len(df.index), interval=25, blit=True)
+ani.save('test.gif', dpi=80, writer='imagemagick')
+# plt.show()

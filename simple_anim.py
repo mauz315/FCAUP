@@ -13,7 +13,8 @@ def update(num, x, y, line):
     line.axes.axis([0, 10, 0, 1])
     return line,
 
+
 ani = animation.FuncAnimation(fig, update, len(x), fargs=[x, y, line],
                               interval=25, blit=True)
-ani.save('test.gif')
+ani.save('test.gif', dpi=80, writer='imagemagick')
 plt.show()
