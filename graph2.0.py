@@ -27,6 +27,7 @@ ax1.set_xlim(min(df.index), max(df.index))
 
 monthyearFmt = mdates.DateFormatter('%b-%y')
 ax1.xaxis.set_major_formatter(monthyearFmt)
+ax1.xaxis.set_major_locator(plt.MaxNLocator(5))
 
 ax1.spines['top'].set_visible(False)
 ax1.spines['right'].set_visible(False)
