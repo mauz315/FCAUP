@@ -8,7 +8,7 @@ import matplotlib.dates as mdates
 import matplotlib.animation as animation
 from datetime import datetime
 
-df = pd.read_csv('data3.csv', ';')
+df = pd.read_csv('data4.csv', ';')
 df.Date = pd.to_datetime(df.Date, dayfirst=True)
 
 df.reset_index(drop=True, inplace=True)
