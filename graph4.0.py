@@ -14,16 +14,20 @@ df.Date = pd.to_datetime(df.Date, dayfirst=True)
 df.reset_index(drop=True, inplace=True)
 df.set_index("Date", inplace=True)
 
+supDate = max(df.index)
+lowDate = min(df.index)
+df = df[:99]
+
 fig1 = plt.figure(figsize=(8, 6))
 ax1 = fig1.add_subplot(111)
-ax1.plot(df, 'w')
+ax1.plot(df)
 
 fmt = '${x:,.1f}'  # formato se borra
 tick = mtick.StrMethodFormatter(fmt)
 ax1.yaxis.set_major_formatter(tick)
 
 ax1.set_ylim(2, 40)
-ax1.set_xlim(min(df.index), max(df.index))
+ax1.set_xlim(lowDate, supDate)
 
 monthyearFmt = mdates.DateFormatter('%b-%y')
 ax1.xaxis.set_major_formatter(monthyearFmt)
