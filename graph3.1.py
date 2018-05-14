@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 import matplotlib.dates as mdates
 import matplotlib.animation as animation
-from datetime import datetime
+from datetime import datetime, timedelta
 
 df = pd.read_csv('data3.csv', ';')
 df.Date = pd.to_datetime(df.Date, dayfirst=True)
@@ -28,7 +28,7 @@ tick = mtick.StrMethodFormatter(fmt)
 ax1.yaxis.set_major_formatter(tick)
 
 ax1.set_ylim(2.7, 11)
-ax1.set_xlim(min(df.index), supDate)
+ax1.set_xlim(min(df.index)-timedelta(days=30), supDate)
 
 monthyearFmt = mdates.DateFormatter('%b-%y')
 ax1.xaxis.set_major_formatter(monthyearFmt)
