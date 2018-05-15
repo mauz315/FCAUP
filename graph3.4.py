@@ -8,7 +8,7 @@ import matplotlib.dates as mdates
 import matplotlib.animation as animation
 from datetime import datetime, timedelta
 
-df = pd.read_csv('data4.csv', ';')
+df = pd.read_csv('data3.csv', ';')
 df.Date = pd.to_datetime(df.Date, dayfirst=True)
 
 df.reset_index(drop=True, inplace=True)
@@ -16,14 +16,14 @@ df.set_index("Date", inplace=True)
 
 fig1 = plt.figure(figsize=(8, 6))
 ax1 = fig1.add_subplot(111)
-ax1.plot(df)
+ax1.plot(df, 'r')
 
 fmt = '${x:,.1f}'  # formato se borra
 tick = mtick.StrMethodFormatter(fmt)
 ax1.yaxis.set_major_formatter(tick)
 
-ax1.set_ylim(2, 40)
-ax1.set_xlim(min(df.index) - timedelta(days=30) , max(df.index))
+ax1.set_ylim(2.7, 11)
+ax1.set_xlim(min(df.index)-timedelta(days=30), max(df.index))
 
 monthyearFmt = mdates.DateFormatter('%b-%y')
 ax1.xaxis.set_major_formatter(monthyearFmt)
@@ -31,8 +31,5 @@ ax1.xaxis.set_major_formatter(monthyearFmt)
 ax1.spines['top'].set_visible(False)
 ax1.spines['right'].set_visible(False)
 
-fig1.savefig('graph4_end.png')
+fig1.savefig('graph3_end_2.png')
 fig1.show()
-
-
-
